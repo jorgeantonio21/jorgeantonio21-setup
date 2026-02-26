@@ -1,0 +1,33 @@
+model = "gpt-5.3-codex"
+
+[notice.model_migrations]
+"gpt-5.2-codex" = "gpt-5.3-codex"
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]
+
+[mcp_servers.notion]
+url = "https://mcp.notion.com/mcp"
+
+[mcp_servers.exa]
+command = "npx"
+args = ["-y", "exa-mcp-server"]
+
+[mcp_servers.exa.env]
+EXA_API_KEY = "${EXA_API_KEY}"
+
+[mcp_servers.slack]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-slack"]
+
+[mcp_servers.slack.env]
+SLACK_BOT_TOKEN = "${SLACK_BOT_TOKEN}"
+SLACK_TEAM_ID = "${SLACK_TEAM_ID}"
+
+[mcp_servers.telegram]
+command = "npx"
+args = ["-y", "@iqai/mcp-telegram"]
+
+[mcp_servers.telegram.env]
+TELEGRAM_BOT_TOKEN = "${TELEGRAM_BOT_TOKEN}"
