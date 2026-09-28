@@ -20,7 +20,7 @@ for file in "${FILES[@]}"; do
     echo "Symlinked $SCRIPT_DIR/$file -> $target"
 done
 
-DIRS=("agents" "commands" "skills")
+DIRS=("agents" "commands" "skills" "hooks")
 for dir in "${DIRS[@]}"; do
     target="$TARGET_DIR/$dir"
     if [ -e "$target" ] && [ ! -L "$target" ]; then
