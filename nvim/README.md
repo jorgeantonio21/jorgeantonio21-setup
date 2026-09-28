@@ -1,6 +1,6 @@
 # Neovim
 
-NvChad v2.5-based Neovim configuration. Uses the Onedark color theme and is tuned for Rust development with rustaceanvim, DAP debugging, and crates.nvim. Includes git integration via fugitive, gitsigns, and codediff, a Cursor-style review flow for agent edits, and AI CLI integration for Claude Code and Codex. LSP support out of the box, with conform.nvim for formatting and stylua for Lua files.
+NvChad v2.5-based Neovim configuration. Uses the Onedark color theme and is tuned for Rust development with rustaceanvim, DAP debugging, and crates.nvim. Includes git integration via fugitive, gitsigns, and codediff, a Cursor-style review flow for agent edits, and AI CLI integration for Claude Code, Codex and pi. LSP support out of the box, with conform.nvim for formatting and stylua for Lua files.
 
 ## Prerequisites
 
@@ -11,6 +11,7 @@ NvChad v2.5-based Neovim configuration. Uses the Onedark color theme and is tune
 - [ripgrep](https://github.com/BurntSushi/ripgrep) for Telescope live grep
 - The [`claude`](https://claude.com/claude-code) CLI on `PATH` for the Claude Code integration
 - The [`codex`](https://github.com/openai/codex) CLI on `PATH` for the Codex integration
+- The [`pi`](https://github.com/badlogic/pi) CLI with its `pi-nvim` extension (`pi install npm:pi-nvim`) for the pi integration
 
 ## What's included
 
@@ -102,6 +103,23 @@ subscription and would otherwise take over `<Tab>`.
 sidekick supports every CLI it knows about, so `<leader>os` reaches Gemini, pi, opencode and the
 rest without extra config. To keep Codex sessions alive across Neovim restarts, uncomment the
 `mux` line in the plugin spec -- it parks the session in a tmux pane.
+
+## pi
+
+[carderne/pi-nvim](https://github.com/carderne/pi-nvim) sends context from Neovim into a pi session
+that is already running in another terminal. pi's `pi-nvim` extension opens a unix socket under
+`/tmp/pi-nvim-sockets/` and the plugin picks the session whose cwd matches yours. Nothing runs inside
+Neovim and there is nothing to accept or reject here; review pi's edits with the flow above.
+
+| Keymap        | Mode   | Action                                                        |
+|---------------|--------|---------------------------------------------------------------|
+| `<leader>p`   | n, v   | Send-to-pi dialog: file, selection or whole buffer plus a prompt |
+| `<leader>pp`  | n      | Type a prompt and send it                                     |
+| `<leader>pf`  | n      | Send the current file path with a prompt                      |
+| `<leader>ps`  | v      | Send the visual selection with a prompt                       |
+| `<leader>pb`  | n      | Send the whole buffer with a prompt                           |
+| `<leader>pi`  | n      | Check that pi is reachable                                    |
+| `<leader>pS`  | n      | List and switch between running pi sessions                   |
 
 ## Manual install
 
