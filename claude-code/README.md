@@ -13,7 +13,7 @@ Configuration for the [Claude Code](https://docs.anthropic.com/en/docs/claude-co
 | `CLAUDE.md`     | Global instructions and coding standards       |
 | `settings.json` | Agents, slash commands, skills, hooks, MCP servers |
 | `statusline.sh` | Custom prompt statusline script                |
-| `hooks/`        | Hook scripts for the Neovim review flow        |
+| `hooks/`        | Hook scripts: Neovim review flow, desktop notifications |
 
 ## Manual install
 
@@ -23,7 +23,8 @@ chmod +x install.sh
 ./install.sh
 ```
 
-This symlinks configuration files to `~/.claude/` where Claude Code expects them.
+This symlinks configuration files to `~/.claude/` where Claude Code expects them. Hook scripts are
+linked one by one into `~/.claude/hooks/`, so scripts that other tools keep there stay in place.
 
 ## Neovim
 
@@ -35,3 +36,8 @@ The hooks in `hooks/` feed that config's review flow: `git-intent-to-add.sh` (Po
 `Write`) makes files Claude creates visible to `git diff`, and `nvim-notify.sh` (Stop and
 Notification, async) tells the Neovim that Claude runs in when a turn ends or Claude is waiting on
 you. See [Reviewing agent changes](../nvim/README.md#reviewing-agent-changes).
+
+## Desktop notifications
+
+`hooks/desktop-notify.sh` (Notification) shows Claude's message as a desktop notification: `osascript`
+on macOS, `notify-send` on Linux when a display is available, and nothing on a headless host.
