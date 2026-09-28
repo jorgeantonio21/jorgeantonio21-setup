@@ -23,3 +23,9 @@ chmod +x install.sh
 ```
 
 This symlinks configuration files to `~/.claude/` where Claude Code expects them.
+
+## Neovim
+
+The [`nvim/`](../nvim) config talks to Claude Code over the same IDE protocol as the VS Code and
+JetBrains extensions via claudecode.nvim, with keymaps under `<leader>a`. See
+[nvim/README.md](../nvim/README.md#claude-code).
