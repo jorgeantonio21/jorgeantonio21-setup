@@ -155,20 +155,18 @@ return {
   },
 
   {
-    'saecki/crates.nvim',
-    ft = {"toml"},
+    "saecki/crates.nvim",
+    ft = { "toml" },
     config = function()
       require("crates").setup {
-        completion = {
-          cmp = {
-            enabled = true
-          },
+        lsp = {
+          enabled = true,
+          actions = true,
+          completion = true,
+          hover = true,
         },
       }
-      require('cmp').setup.buffer({
-        sources = { { name = "crates" }}
-      })
-    end
+    end,
   },
 
   -- Claude Code IDE integration: implements the same WebSocket protocol as the
@@ -365,16 +363,27 @@ return {
     },
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
+  { import = "nvchad.blink.lazyspec" },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "saghen/blink.cmp",
+    opts = function(_, opts)
+      opts.keymap = vim.tbl_extend("force", opts.keymap or {}, {
+        ["<Tab>"] = {
+          function()
+            local ok, vt = pcall(require, "codeium.virtual_text")
+            if ok and vt.get_current_completion_item and vt.get_current_completion_item() then
+              vt.accept()
+              return true
+            end
+          end,
+          "select_next",
+          "snippet_forward",
+          "fallback",
+        },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+      })
+      return opts
+    end,
+  },
 }
