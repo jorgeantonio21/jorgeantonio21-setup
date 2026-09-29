@@ -1,6 +1,6 @@
 # Claude Code
 
-Configuration for the [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI. Includes 8 custom domain-specialist agents, slash commands (fix-issue, review-pr, merge-dependabot), 7 domain skills, safety hooks that block dangerous operations (rm -rf, force-push to main), a custom statusline, and MCP server integrations.
+Configuration for the [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI. Includes 8 custom domain-specialist agents, slash commands (fix-issue, review-pr, merge-dependabot), safety hooks that block dangerous operations (rm -rf, force-push to main), a custom statusline, and MCP server integrations.
 
 ## Prerequisites
 
@@ -35,3 +35,13 @@ The hooks in `hooks/` feed that config's review flow: `git-intent-to-add.sh` (Po
 `Write`) makes files Claude creates visible to `git diff`, and `nvim-notify.sh` (Stop and
 Notification, async) tells the Neovim that Claude runs in when a turn ends or Claude is waiting on
 you. See [Reviewing agent changes](../nvim/README.md#reviewing-agent-changes).
+
+## Skills
+
+Skills live in the top-level [`skills/`](../skills) folder because they are shared with Codex and pi. That folder also pulls in the matpocock-skills fork. Install them separately:
+
+```sh
+cd ../skills && ./install.sh
+```
+
+That links each skill into `~/.claude/skills`.

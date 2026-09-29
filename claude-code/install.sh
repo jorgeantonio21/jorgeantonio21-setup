@@ -20,7 +20,7 @@ for file in "${FILES[@]}"; do
     echo "Symlinked $SCRIPT_DIR/$file -> $target"
 done
 
-DIRS=("agents" "commands" "skills" "hooks")
+DIRS=("agents" "commands" "hooks")
 for dir in "${DIRS[@]}"; do
     target="$TARGET_DIR/$dir"
     if [ -e "$target" ] && [ ! -L "$target" ]; then
@@ -30,5 +30,9 @@ for dir in "${DIRS[@]}"; do
     ln -sf "$SCRIPT_DIR/$dir" "$target"
     echo "Symlinked $SCRIPT_DIR/$dir -> $target"
 done
+
+echo ""
+echo "Skills are shared with codex and pi; install them with:"
+echo "  bash $(dirname "$SCRIPT_DIR")/skills/install.sh"
 
 echo "Done."
