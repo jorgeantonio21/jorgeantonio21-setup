@@ -29,3 +29,9 @@ chmod +x install.sh
 ```
 
 This symlinks configuration files to `~/.codex/` where the Codex CLI expects them.
+
+## Neovim
+
+The [`nvim/`](../nvim) config runs Codex in a side split via sidekick.nvim, with keymaps under
+`<leader>o` for sending the current file, a visual selection, or the function at the cursor. See
+[nvim/README.md](../nvim/README.md#codex).

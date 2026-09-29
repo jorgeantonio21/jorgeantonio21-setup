@@ -8,7 +8,7 @@ Personal development environment configuration for macOS.
 |--------|------|-------------|
 | `ghostty/` | Ghostty | Terminal emulator -- Catppuccin Mocha, transparent background |
 | `tmux/` | tmux | Multiplexer -- TPM plugins, session persistence, Catppuccin theme |
-| `nvim/` | Neovim | NvChad v2.5 -- Rust development, DAP debugging, git integration |
+| `nvim/` | Neovim | NvChad v2.5 -- Rust development, git integration, Claude Code, Codex and pi |
 | `claude-code/` | Claude Code | AI CLI -- custom agents, commands, skills, safety hooks |
 | `codex/` | Codex | AI CLI -- custom agents, MCP servers |
 | `nushell/` | Nushell | Shell -- default v0.110 config |
