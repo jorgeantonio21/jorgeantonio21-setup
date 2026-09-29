@@ -1,6 +1,6 @@
 # Neovim
 
-NvChad v2.5-based Neovim configuration. Uses the Onedark color theme and is tuned for Rust development with rustaceanvim, DAP debugging, and crates.nvim. Includes git integration via fugitive, gitsigns, and codediff, a Cursor-style review flow for agent edits, and AI CLI integration for Claude Code, Codex and pi. LSP support out of the box, with conform.nvim for formatting and stylua for Lua files.
+NvChad v2.5-based Neovim configuration. Uses the Onedark color theme and is tuned for Rust development with rustaceanvim and crates.nvim. Includes git integration via fugitive, gitsigns, and codediff, a Cursor-style review flow for agent edits, and AI CLI integration for Claude Code, Codex and pi. LSP support out of the box, with conform.nvim for formatting and stylua for Lua files.
 
 ## Prerequisites
 
