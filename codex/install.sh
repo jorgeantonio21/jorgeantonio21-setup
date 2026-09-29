@@ -33,4 +33,8 @@ echo "WARNING: config.toml may contain environment variable placeholders."
 echo "Ensure the following env vars are set before using codex:"
 echo "  Check $SCRIPT_DIR/config.toml for \${...} placeholders and set them in your shell."
 
+echo ""
+echo "Skills are shared with claude-code and pi; install them with:"
+echo "  bash $(dirname "$SCRIPT_DIR")/skills/install.sh"
+
 echo "Done."

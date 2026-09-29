@@ -91,32 +91,6 @@ return {
     version = '^8', -- Recommended
     lazy = false, -- This plugin is already lazy
     ft = "rust",
-    config = function ()
-      local mason_path = vim.fn.expand("$MASON")
-      if mason_path == "$MASON" or mason_path == "" then
-        mason_path = vim.fn.stdpath("data") .. "/mason"
-      end
-
-      local extension_path = mason_path .. "/packages/codelldb/extension/"
-      local codelldb_path = extension_path .. "adapter/codelldb"
-      local liblldb_ext = vim.uv.os_uname().sysname == "Darwin" and ".dylib" or ".so"
-      local liblldb_path = extension_path .. "lldb/lib/liblldb" .. liblldb_ext
-      local cfg = require('rustaceanvim.config')
-
-      if vim.uv.fs_stat(codelldb_path) == nil or vim.uv.fs_stat(liblldb_path) == nil then
-        vim.notify(
-          "codelldb not found in Mason. Install it with :MasonInstall codelldb",
-          vim.log.levels.WARN
-        )
-        return
-      end
-
-      vim.g.rustaceanvim = {
-        dap = {
-          adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-        },
-      }
-    end
   },
 
   {
@@ -125,33 +99,6 @@ return {
     init = function ()
       vim.g.rustfmt_autosave = 1
     end
-  },
-
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-			local dap, dapui = require("dap"), require("dapui")
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-      end
-		end,
-  },
-
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
-    config = function()
-			require("dapui").setup()
-		end,
   },
 
   {

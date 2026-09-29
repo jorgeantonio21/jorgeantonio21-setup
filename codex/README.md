@@ -29,3 +29,19 @@ chmod +x install.sh
 ```
 
 This symlinks configuration files to `~/.codex/` where the Codex CLI expects them.
+
+## Neovim
+
+The [`nvim/`](../nvim) config runs Codex in a side split via sidekick.nvim, with keymaps under
+`<leader>o` for sending the current file, a visual selection, or the function at the cursor. See
+[nvim/README.md](../nvim/README.md#codex).
+
+## Skills
+
+Skills live in the top-level [`skills/`](../skills) folder because they are shared with Claude Code and pi. That folder also pulls in the matpocock-skills fork. Install them separately:
+
+```sh
+cd ../skills && ./install.sh
+```
+
+That links each skill into `~/.codex/skills`, alongside the bundled `.system/` skills Codex manages itself. Skill discovery needs the `skill_search` feature, which is on by default -- check with `codex features list | grep skill`.
