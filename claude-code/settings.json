@@ -88,7 +88,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\"'"
+            "command": "$HOME/.claude/hooks/desktop-notify.sh"
           },
           {
             "type": "command",
@@ -116,6 +116,6 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/Users/jorgeantonio/.claude/statusline.sh"
+    "command": "~/.claude/statusline.sh"
   }
 }
